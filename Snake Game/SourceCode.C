@@ -20,7 +20,7 @@ void Border();
 int Score();
 void Delay(long double);
 void Food();
-void ScoreOnly();
+int ScoreOnly();
 void Bend();
 void record();
 void Print();
@@ -84,7 +84,8 @@ void Print(){
   printf("1-> Use arrow keys to move the snake within the block to fetch the food\n");
   printf("2-> Do not the hit the border\n");
   printf("\t\tEnjoy the game\n");
-  getch();
+  if(getch()==27)
+         exit(0);
 }
 void Load(){
   int r,q;
@@ -92,8 +93,71 @@ void Load(){
   printf("Loading.....\n");
   gotoxy(34,15);
   for(r=1;r<=10;r++){
-  for(q=1;q<=10000000;q++);
+  for(q=0;q<=100000000;q++);
   printf("%c",177);
   }
   getch();
+}
+void Border(){
+        system("cls");
+        GotoXY(food.x,food.y);
+        printf("F");
+        int i;
+        
+        for(i=10;i<71;i++)
+        {
+                GotoXY(i,10);
+                printf("!");
+                GotoXY(i,30);
+                printf("!");
+        }
+        for(i=10;i<31;i++)//left and right walls
+        {
+               GotoXY(10,i);
+                printf("!");
+               GotoXY(70,i);
+                printf("!");
+        }
+}
+void Food(){
+if(head.x==food.x && head.y==food.y){
+        length++;
+        time_t a;
+        a=time(0);
+        srand(a);
+        food.x=rand()%70;
+        if(food.x <=10 )
+                food.x+=11;
+        food.y=rand()%30;
+        if(food.y <=10)
+                food.y+=11;
+}
+else if(food.x==0)//initially all global variables are zero
+{
+        food.x=rand()%70;
+        if(food.x<=10)
+                food.x+=11;
+        food.y=rand()%30;
+        if(food.y<=10)
+                food.y+=11;
+}
+}
+int Score(){
+        int score;
+        score = length-5;
+        GotoXY(20,8);
+        printf("Score : %d",score);
+        GotoXY(50,8);
+        printf("Life  : %d",life);
+        return score;
+}
+int Scoreonly(){
+        int score=Score();
+        system("cls");
+        return score;
+}
+void Delay(long double k){
+        Score();
+        long double i;
+        for(i=0;i<=10000000;i++);
 }
