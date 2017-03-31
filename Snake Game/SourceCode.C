@@ -70,6 +70,7 @@ void GotoXY(int x,int y)
 {
   COORD a;
   HANDLE b;
+        fflush(stdout);
   b=GetCursorHandle(STD_OUTPUT_HANDLE);
   a.X=x;
   a.Y=y;
