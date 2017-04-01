@@ -73,14 +73,14 @@ void gotoxy(int x,int y)
   COORD coord;
   coord.X=x;
   coord.Y=y;
-  SetConsoleCursorPosition(GetCursorHandle(STD_OUTPUT_HANDLE),coord);
+  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
 }
 void GotoXY(int x,int y)
 {
   COORD a;
   HANDLE b;
         fflush(stdout);
-  b=GetCursorHandle(STD_OUTPUT_HANDLE);
+  b=GetStdHandle(STD_OUTPUT_HANDLE);
   a.X=x;
   a.Y=y;
   SetConsoleCursorPosition(b,a);
@@ -209,7 +209,7 @@ int a,i;
                 if(key==UP)
                         head.y--;
                 else if(key==DOWN)
-                        head.y++:
+                        head.y++;
                 else if(key==LEFT)
                         head.x--;
                 else if(key==RIGHT)
@@ -299,7 +299,7 @@ void Bend(){
                 for(i=0;i<=(head.x-bend[bend_no].x)&&len<length;i++){
                         body[len].x=head.x-j;
                         body[len].y=head.y;
-                        Goto(body[len].x,body[len].y)
+                        GotoXY(body[len].x,body[len].y);
                         {
                                 if(len==0)
                                       printf(">");
@@ -317,7 +317,7 @@ void Bend(){
                 for(i=0;i<=(bend[bend_no].x-head.x)&&len<length;i++){
                         body[len].x=head.x+j;
                         body[len].y=head.y;
-                        Goto(body[len].x,body[len].y);
+                        GotoXY(body[len].x,body[len].y);
                         {
                         if(len==0)
                             printf("<");
@@ -340,7 +340,7 @@ void Bend(){
                          if(i=length || check!=0)
                                  break;
                  }
-                 if(head.x<=10 ||head.x>=70 || head.y<=10 || head.y>=30)
+                 if(head.x<=10 ||head.x>=70 || head.y<=10 || head.y>=30 || check!=0;)
                  {
                  life--;
                          if(life >= 0){
@@ -367,8 +367,8 @@ void Bend(){
          getch();
          printf("Enter Your Name : ");
          scanf("%[^\n]s",plname);
-         nplname[0]=toupper(planame[0]); 
-         for(i=1;planme[i]!='\0';i++)
+         nplname[0]=toupper(plname[0]); 
+         for(i=1;plname[i]!='\0';i++)
          {
                 if(planme[i-1]==' ')
                 {
@@ -376,7 +376,7 @@ void Bend(){
                         nplname[i]=toupper(plname[i]);
                 }
                  else 
-                         nplname[i]=planme[i];
+                         nplname[i]=plname[i];
          }
          nplname[i]='\0';
          fprintf(Info,"Player Name : %s",nplname);
