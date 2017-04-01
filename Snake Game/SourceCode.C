@@ -101,7 +101,7 @@ void Load(){
   gotoxy(36,14);
   printf("Loading.....\n");
   gotoxy(34,15);
-  for(r=1;r<=10;r++){
+  for(r=1;r<=20;r++){
   for(q=0;q<=100000000;q++);
   printf("%c",177);
   }
